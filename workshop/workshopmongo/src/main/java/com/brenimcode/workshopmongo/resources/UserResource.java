@@ -34,7 +34,6 @@ public class UserResource {
 	    return ResponseEntity.ok().body(listDto);
 	}
 
-	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable String id) {
 		User obj = service.findById(id);
@@ -62,6 +61,5 @@ public class UserResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
-	
 	
 }
