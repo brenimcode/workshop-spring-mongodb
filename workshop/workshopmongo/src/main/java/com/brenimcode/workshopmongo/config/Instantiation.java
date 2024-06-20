@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.brenimcode.workshopmongo.domain.Post;
 import com.brenimcode.workshopmongo.domain.User;
 import com.brenimcode.workshopmongo.dto.AuthorDTO;
+import com.brenimcode.workshopmongo.dto.CommentDTO;
 import com.brenimcode.workshopmongo.repository.PostRepository;
 import com.brenimcode.workshopmongo.repository.UserRepository;
 
@@ -41,6 +42,11 @@ public class Instantiation implements CommandLineRunner{
 		
 		Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(maria));
 		Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(maria));
+		
+		CommentDTO c1 = new CommentDTO("Boa viagem mano!", sdf.parse("21/03/2018"), new AuthorDTO(alex));
+		CommentDTO c2 = new CommentDTO("Aproveiteee!", sdf.parse("22/03/2018"), new AuthorDTO(bob));
+		
+		post1.getComments().addAll(Arrays.asList(c1,c2));
 		
 		postRepository.saveAll(Arrays.asList(post1,post2));
 		
